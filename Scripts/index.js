@@ -92,6 +92,14 @@ function handlesubmit(event){
 
 let isvalid=true
 
+if(password.length<8){
+    document.getElementById("password-error").textContent = "Password soul contain atleast 8 character."
+    isvalid=false
+
+}
+{
+
+}
     if(password!=confirmPassword){
         document.getElementById("confirm-password-error").textContent = "Passwords does not match."
         isvalid=false
