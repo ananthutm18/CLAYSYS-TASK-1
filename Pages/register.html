@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Ananthu">
+    <meta name="description" content="A demo web site using HTML,CSS and Javascript">
+
+    <title>Spartans</title>
+  </head>
+  <body>
+    <my-header></my-header>  
+    <div>
+      <h1>Join With Spartans Today........</h1>
+      <form class="registration-form" onsubmit="handlesubmit(event)">
+        <h2>Register</h2>
+        <div class="reg-sub-containers">
+          <label for="username">First Name:</label>
+          <input type="text" id="fname" name="username" required />
+          <div class="error" id="fname-error"></div>
+
+          <label for="username">Last Name:</label>
+          <input type="text" id="lname" name="username" required />
+          <div class="error" id="lname-error"></div>
+
+        </div>
+        <div class="reg-sub-containers">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required onkeyup="setUsername()" />
+          <div class="error" id="email-error"></div>
+
+
+          <label for="username">User Name:</label>
+          <input type="email" id="username" name="username" readonly  />
+        </div>
+
+        <div class="reg-sub-containers">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required  />
+          <div class="error" id="password-error"></div>
+
+
+          <label for="confirm-password">Confirm Password:</label>
+          <input
+            type="password"
+            id="confirm-password"
+            name="confirm-password"
+            required
+          />
+          <div class="error" id="confirm-password-error"></div>
+
+        </div>
+
+        <div class="reg-sub-containers">
+          <label for="dob">Date of Birth:</label>
+          <input type="date" id="dob" name="dob" required />
+
+          <div class="error" id="dob-error"></div>
+
+          <label for="age">Age:</label>
+          <input type="number" id="age" name="age" required min="1" max="120" />
+          <div class="error" id="age-error"></div>
+
+        </div>
+
+        <div class="reg-sub-containers">
+          <label for="state">State:</label>
+          <select id="state" name="state" required onchange="setCities()">
+            <option value="">Select Your state</option>
+            <option value="Kerala">Kerala</option>
+            <option value="TamilNadu">TamilNadu</option>
+            <option value="Karnataka">Karnataka</option>
+            <option value="Maharashtra">Maharashtra</option>
+          </select>
+
+          <div class="error" id="state-error"></div>
+
+
+          <label for="city">City:</label>
+          <select id="city" name="city" required></select>
+          <div class="error" id="city-error"></div>
+
+        </div>
+
+        <div class="reg-sub-containers">
+          <label for="address">Phone:</label>
+
+          <input type="number" id="phone" name="phone" required />
+          <div class="error" id="phone-error"></div>
+
+
+          <label for="address">Address:</label>
+          <textarea
+            id="address"
+            name="address"
+            rows="4"
+            required
+            placeholder="Enter your address here..."
+          ></textarea>
+        </div>
+
+        <button type="submit">Register</button>
+      </form>
+    </div>
+
+    <my-footer></my-footer>
+    <script src="../Scripts/index.js"></script>
+  </body>
+</html>
