@@ -1,31 +1,31 @@
 //Header Component setting
 
 class MyHeader extends HTMLElement {
-  connectedCallback() {
-    fetch("../Layouts/header.html")
-      .then((response) => response.text())
-      .then((data) => {
-        this.innerHTML = data
-      })
-      .catch((error) => {
-        console.error("Error loading header:", error)
-      });
-  }
+    async connectedCallback() {
+        try {
+          const res = await fetch("../Layouts/header.html");
+          const data = await res.text();
+          this.innerHTML = data;
+        } catch (error) {
+          console.error("Error loading header:", error);
+        }
+      }
 }
 customElements.define("my-header", MyHeader)
 
 //Footer component settin
 
 class MyFooter extends HTMLElement {
-  connectedCallback() {
-    fetch("../Layouts/footer.html")
-      .then((response) => response.text())
-      .then((data) => {
-        this.innerHTML = data
-      })
-      .catch((error) => {
-        console.error("Error loading header:", error)
-      });
+  async connectedCallback() {
+
+
+    try {
+        const res = await fetch("../Layouts/footer.html");
+        const data = await res.text();
+        this.innerHTML = data;
+      } catch (error) {
+        console.error("Error loading header:", error);
+      }
   }
 }
 customElements.define("my-footer", MyFooter)
