@@ -4,10 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
-<body>
+    <link href="../src/output.css" rel="stylesheet">
 
-    <h1>About</h1>
-    
+</head>
+<body class="bg-gray-100">
+
+
+    <my-header></my-header>
+
+
+    <main class="container mx-auto mt-10 p-5 bg-white rounded-lg shadow-lg">
+        <!-- Introduction Section -->
+        <section class="text-center mb-10">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">Who We Are</h2>
+            <p class="text-gray-600">Welcome to Spartan World! We are dedicated to providing top-rated products for men, inspired by the bravery and strength of ancient warriors.</p>
+        </section>
+
+        <!-- Our Mission Section -->
+        <section class="mb-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Our Mission</h3>
+                    <p class="text-gray-600">Our mission is to empower men with high-quality products that reflect their inner strength and courage. We believe that every man deserves to feel confident and capable, and our products are designed to help achieve that.</p>
+                </div>
+                <div>
+                    <img src="https://qph.cf2.quoracdn.net/main-qimg-777fb742c2d34d360b09a972e800eda0-lq" alt="Our Mission" class="rounded-lg shadow-lg">
+                </div>
+            </div>
+        </section>
+        </main>
+
+        <my-footer></my-footer>
+        <script src="../jquery/jquery.js" type="text/javascript"></script>
+
+        <script src="../Scripts/index.js"></script>
+
 </body>
 </html>

@@ -1,0 +1,11 @@
+{
+  "name": "claysys-task-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "build":"npx tailwindcss -i ./Pages/index.css -o ./src/output.css --watch"
+  },
+  "author": "",
+  "license": "ISC"
+}

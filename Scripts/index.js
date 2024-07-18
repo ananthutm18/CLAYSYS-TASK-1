@@ -28,6 +28,21 @@ class MyFooter extends HTMLElement {
 }
 customElements.define("my-footer", MyFooter);
 
+//Footer component settin
+
+class MyGame extends HTMLElement {
+  async connectedCallback() {
+    try {
+      const res = await fetch("../Layouts/game.html");
+      const data = await res.text();
+      this.innerHTML = data;
+    } catch (error) {
+      console.error("Error loading header:", error);
+    }
+  }
+}
+customElements.define("my-game", MyGame);
+
 //State city settings------------------------------------
 
 const citiesData = {
@@ -121,9 +136,8 @@ function handlesubmit(event) {
   }
 
   if (isvalid) {
-
     //Storing data in local storage and showing alert
-    const currentData = JSON.parse(localStorage.getItem("userData")) || [];   
+    const currentData = JSON.parse(localStorage.getItem("userData")) || [];
 
     const formData = {
       firstName: fname,
@@ -146,7 +160,6 @@ function handlesubmit(event) {
   }
 }
 
-
 //Function to login
 
 function handleLogin(event) {
@@ -160,15 +173,95 @@ function handleLogin(event) {
   console.log(userdata);
 
   console.log(username, password);
-  
-  const userval = userdata.find(  
+
+  const userval = userdata.find(
     (user) => user.username === username && user.password === password
   );
 
   if (userval) {
     alert("Login successful!");
-    window.location.href = "home.html";  //redirecting the user to hom page
+    window.location.href = "productpage.html"; //redirecting the user to hom page
   } else {
     document.getElementById("login-error").textContent = "Invalid credential.";
   }
 }
+
+//function to hide and show the contact form on the home pafe
+let toggle = 1;
+
+$(document).ready(function () {
+  $("#contact-form").hide();
+
+  $("#contact-butt").click(function () {
+    toggle = toggle + 1;
+    if (toggle % 2 == 0) {
+      $("#contact-form").slideDown();
+    } else {
+      $("#contact-form").hide();
+    }
+  });
+});
+
+//function to remove hide and show the monu lists in small screens
+
+function handleMenu() {
+  console.log("hello");
+  const menuList = document.getElementById("menuList");
+  menuList.classList.toggle("show");
+}
+
+//Product fetching using fake api to dispaly all product page
+
+document.addEventListener("DOMContentLoaded", function () {
+  const Productpage = document.getElementById("products");
+
+  fetch("https://fakestoreapi.com/products")
+    .then((response) => response.json())
+    .then((products) => {
+      products.forEach((product) => {
+        const productCard = `
+               <a href="productDetail.html?id=${product.id}">
+                    <div class="bg-white p-6 rounded-lg shadow-lg h-32">
+                      <img src="${product.image}" alt="${product.title}" class="w-full  h-48 object-cover mb-4 rounded-lg">
+                      <h3 class="text-lg font-semibold text-gray-800">${product.title}</h3>
+                      <p class="text-gray-600 mt-2">$${product.price}</p>
+                      <p class="text-gray-600 mt-2">${product.description}</p>
+                  </div>
+                  </a>
+              `;
+        Productpage.innerHTML += productCard;
+      });
+    })
+    .catch((error) => {
+      console.error("Error happend", error);
+    });
+});
+
+//Product details  fetching using fake api to dispaly producy details  page
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const productDetailsContainer = document.getElementById("product-details");
+  const urlParams = new URLSearchParams(window.location.search);
+  const productId = urlParams.get("id");
+
+  fetch(`https://fakestoreapi.com/products/${productId}`)
+    .then((response) => response.json())
+    .then((product) => {
+      const productDetails = `
+                  <div class="flex">
+                      <img src="${product.image}" alt="${product.title}" class="w-m  h-auto rounded-lg mb-4 mr-8">
+                      <div class="w-m">
+                          <h2 class="text-2xl font-bold text-gray-800 mb-4">${product.title}</h2>
+                          <p class="text-gray-600 mb-4">$${product.price}</p>
+                          <p class="text-gray-600 mb-4">${product.description}</p>
+                          <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-500">Add to Cart</button>
+                      </div>
+                  </div>
+              `;
+      productDetailsContainer.innerHTML = productDetails;
+    })
+    .catch((error) => {
+      console.error("Error happened");
+    });
+});

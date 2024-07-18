@@ -1,3 +1,6 @@
+
+
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -133,31 +136,36 @@ textarea {
 }
 
 .footer-links a:hover {
-  color: #ffcc00; /* Change this to your preferred hover color */
+  color: #ffcc00;
 }
 
 /* Login form css */
 
-.login-form {
+.login-form  {
+  position: absolute;
+left: 800px;
+top: 100px;
   background-color: white;
-  padding: 20px;
-  height: 100%;
+  padding: 100px;
+  height: 40%;
   border-radius: 5px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   max-width: 400px;
-  margin: 0 auto; /* Center the form */
+  margin: 0 auto;
+  border-radius: 5px;
+
 }
 
 
 .login-container{
     height: 82vh;
-    background-color:rgb(116, 244, 206);
 
-    
+
     background-image:url("https://cdn.mos.cms.futurecdn.net/K8WLkvrMvXhHG9idR3kujh.jpg");
 
 }
 .login-container form{
+
 
     background-image:url("https://static0.gamerantimages.com/wordpress/wp-content/uploads/2021/11/assassins-creed-valhalla-dawn-of-ragnarok-.jpg");
 
@@ -184,7 +192,7 @@ color: white;
   color: white;
   background-repeat: no-repeat; 
   background-size: cover; 
-height: 82vh;
+height: auto;
   padding: 20px;
   text-align: center;
 }
@@ -192,4 +200,159 @@ height: 82vh;
   padding: 40px;
   border-radius: 5px;
   margin: 20px 0;
+}
+
+
+
+#contact-butt{
+  width: 200px;
+}
+
+#contact-form {
+  margin-top: 20px;
+  margin-left: 42%;
+overflow:auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  width: 300px;
+}
+#contact-form input, #contact-form textarea, #contact-form button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.showmenu{
+  display: none;
+}
+#menuList{
+display: flex;
+}
+
+
+@media only screen and (max-width: 768px) {
+  .login-container form{
+    max-width: 300px;
+    height: 550px;
+    padding: 15px;
+background-image: none;  
+background-color: rgb(18, 65, 50);
+}
+  .login-form {
+    max-width: 300px;
+    padding: 15px;
+position:static;  }
+
+  .login-container {
+    height: auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  #contact-form {
+    width: 80%;
+  }
+
+  .nav-container {
+
+  width: auto;
+}
+
+
+
+.nav-links {
+  display: block;
+ 
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  display: block;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+#menuList{
+display: none;
+}
+
+#menuList.show {
+  display: block;
+  background-color: #333;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.showmenu{
+  display: inline;
+  width: 15px;
+right: 16px; 
+top: 2px;
+ position: absolute;
+}
+
+
+#contact-form {
+  margin-top: 20px;
+  margin-left: 2%;
+overflow:auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  width: 300px;
+}
+}
+
+
+
+
+
+
+
+
+
+
+/*Animation to header*/
+
+
+.intro h2, .intro h3 {
+  opacity: 0;
+  font-size: 50px;
+  transform: translateY(20px);
+  animation: fadeInUp 1s forwards, bounce 1s forwards;
+}
+
+.intro h2 {
+  animation-delay: 0.5s;
+}
+
+.intro h3 {
+  animation-delay: 1s;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    color: white;
+      transform: translateY(0);
+  }
+  40% {
+    color: rgb(121, 121, 246);
+      transform: translateY(-50px);
+  }
+  60% {
+    color: rgb(239, 149, 149);
+
+      transform: translateY(-35px);
+  }
+}
+
+@keyframes fadeInUp {
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+
+  
 }
