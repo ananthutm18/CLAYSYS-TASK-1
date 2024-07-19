@@ -10,42 +10,48 @@
   </head>
   <body>
     <my-header></my-header>  
+    <div class="theme-section">
+      <button id="buttTheme" class="theme-mode-btn">Go Dark</button>
+  </div>
     <div>
+      
       <h1>Join With Spartans Today........</h1>
-      <form class="registration-form" onsubmit="handlesubmit(event)">
+      <form id="regForm" class="registration-form" onsubmit="handlesubmit(event)">
+        <label>Dark Mode</label>
         <h2>Register</h2>
         <div class="reg-sub-containers">
           <label for="username">First Name:</label>
-          <input type="text" id="fname" name="username" required />
+          <input class="fields" type="text" id="fname" name="username"  onchange="handelChange()" />
           <div class="error" id="fname-error"></div>
 
           <label for="username">Last Name:</label>
-          <input type="text" id="lname" name="username" required />
+          <input class="fields" type="text" id="lname" name="username"  onchange="handelChange()"  />
           <div class="error" id="lname-error"></div>
 
         </div>
         <div class="reg-sub-containers">
           <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required onkeyup="setUsername()" />
+          <input class="fields" type="text" id="email" name="email"  onkeyup="setUsername()" onchange="handelChange()"  />
           <div class="error" id="email-error"></div>
 
 
           <label for="username">User Name:</label>
-          <input type="email" id="username" name="username" readonly  />
+          <input class="fields" type="email" id="username" name="username" readonly  />
         </div>
 
         <div class="reg-sub-containers">
           <label for="password">Password:</label>
-          <input type="password" id="password" name="password" required  />
+          <input class="fields" type="password" id="password" name="password" onchange="handelChange()"   />
           <div class="error" id="password-error"></div>
 
 
           <label for="confirm-password">Confirm Password:</label>
-          <input
+          <input class="fields"
             type="password"
             id="confirm-password"
             name="confirm-password"
-            required
+            onchange="handelChange()" 
+            
           />
           <div class="error" id="confirm-password-error"></div>
 
@@ -53,19 +59,18 @@
 
         <div class="reg-sub-containers">
           <label for="dob">Date of Birth:</label>
-          <input type="date" id="dob" name="dob" required />
+          <input class="fields" type="date" id="dob" name="dob" required onchange="calculateAge()" />
 
           <div class="error" id="dob-error"></div>
 
           <label for="age">Age:</label>
-          <input type="number" id="age" name="age" required min="15" max="60" />
-          <div class="error" id="age-error"></div>
+          <input class="fields" type="number" id="age" name="age"  min="15" max="60" readonly />
 
         </div>
 
         <div class="reg-sub-containers">
           <label for="state">State:</label>
-          <select id="state" name="state" required onchange="setCities()">
+          <select class="fields"  id="state" name="state"  onchange="setCities()">
             <option value="">Select Your state</option>
             <option value="Kerala">Kerala</option>
             <option value="TamilNadu">TamilNadu</option>
@@ -77,7 +82,7 @@
 
 
           <label for="city">City:</label>
-          <select id="city" name="city" required></select>
+          <select class="fields" id="city" name="city" ></select>
           <div class="error" id="city-error"></div>
 
         </div>
@@ -85,16 +90,16 @@
         <div class="reg-sub-containers">
           <label for="address">Phone:</label>
 
-          <input type="number" id="phone" name="phone" required />
+          <input class="fields" type="number" id="phone" name="phone"  />
           <div class="error" id="phone-error"></div>
 
 
           <label for="address">Address:</label>
-          <textarea
+          <textarea class="fields"
             id="address"
             name="address"
             rows="4"
-            required
+            
             placeholder="Enter your address here..."
           ></textarea>
         </div>

@@ -1,3 +1,8 @@
+let displayValue = "";
+let operator = "";
+let firstOperand = "";
+let secondOperand = "";
+
 //Header Component setting
 
 class MyHeader extends HTMLElement {
@@ -96,7 +101,10 @@ function handlesubmit(event) {
   //Form validation part--------------------------------------------------------
 
   const errorWarning = document.querySelectorAll(".error");
+  const errorBoarder = document.querySelectorAll(".fields");
+
   errorWarning.forEach((message) => (message.textContent = ""));
+  errorBoarder.forEach((boarder) => boarder.classList.remove("error-boarder"));
 
   const password = document.getElementById("password").value;
   const confirmPassword = document.getElementById("confirm-password").value;
@@ -106,29 +114,89 @@ function handlesubmit(event) {
 
   let isvalid = true;
 
+  if (fname.length < 1) {
+    let err = document.getElementById("fname");
+    err.classList.add("error-boarder");
+
+    document.getElementById("fname-error").textContent =
+      "Please enthe the first name";
+    isvalid = false;
+  } else if (fname.length < 2) {
+    let err = document.getElementById("fname");
+    err.classList.add("error-boarder");
+    document.getElementById("fname-error").textContent =
+      "Please enter a First name with more than 2 letters";
+    isvalid = false;
+  }
+
+  if (lname.length < 1) {
+    let err = document.getElementById("lname");
+    err;
+    document.getElementById("lname-error").textContent =
+      "Please enthe the Last name";
+    isvalid = false;
+  } else if (lname.length < 2) {
+    let err = document.getElementById("lname");
+    err.classList.add("error-boarder");
+    document.getElementById("lname-error").textContent =
+      "Please enter the Last name with more than 2 letters";
+    isvalid = false;
+  }
+
+  if (email.length < 1) {
+    let err = document.getElementById("email");
+    err.classList.add("error-boarder");
+
+    document.getElementById("email-error").textContent =
+      "Please enthe the Email";
+    isvalid = false;
+  } else {
+    var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let check = regex.test(email);
+    if (!check) {
+      let err = document.getElementById("email");
+      err.classList.add("error-boarder");
+
+      document.getElementById("email-error").textContent =
+        "Please a valid email";
+      isvalid = false;
+    }
+  }
+
+  if (password.length < 1) {
+    let err = document.getElementById("password");
+    err.classList.add("error-boarder");
+
+    document.getElementById("password-error").textContent =
+      "Please enthe the Password";
+    isvalid = false;
+  }
+
   if (password.length < 8) {
+    let pass = document.getElementById("password");
+    pass.classList.add("error-boarder");
+
     document.getElementById("password-error").textContent =
       "Password soul contain atleast 8 character.";
     isvalid = false;
   }
-  {
-  }
+
   if (password != confirmPassword) {
     document.getElementById("confirm-password-error").textContent =
       "Passwords does not match.";
     isvalid = false;
   }
 
-  if (fname.length < 2) {
-    document.getElementById("fname-error").textContent =
-      "Please enter a First name with more than 2 letters";
-    isvalid = false;
-  }
-  if (lname.length < 2) {
-    document.getElementById("lname-error").textContent =
-      "Please enter A Last name with more than 2 letters";
-    isvalid = false;
-  }
+  // if (fname.length < 2) {
+  //   document.getElementById("fname-error").textContent =
+  //     "Please enter a First name with more than 2 letters";
+  //   isvalid = false;
+  // }
+  // if (lname.length < 2) {
+  //   document.getElementById("lname-error").textContent =
+  //     "Please enter A Last name with more than 2 letters";
+  //   isvalid = false;
+  // }
   if (phone.startsWith("1") || phone.startsWith("2") || phone.startsWith("3")) {
     document.getElementById("phone-error").textContent =
       "Enter a vaild phone number";
@@ -165,7 +233,8 @@ function handlesubmit(event) {
 function handleLogin(event) {
   event.preventDefault();
   document.getElementById("login-error").textContent = "";
-
+  const userText = document.getElementById("username");
+  const passText = document.getElementById("password");
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
 
@@ -183,6 +252,9 @@ function handleLogin(event) {
     window.location.href = "productpage.html"; //redirecting the user to hom page
   } else {
     document.getElementById("login-error").textContent = "Invalid credential.";
+
+    passText.classList.add("error-boarder");
+    userText.classList.add("error-boarder");
   }
 }
 
@@ -239,7 +311,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //Product details  fetching using fake api to dispaly producy details  page
 
-
 document.addEventListener("DOMContentLoaded", function () {
   const productDetailsContainer = document.getElementById("product-details");
   const urlParams = new URLSearchParams(window.location.search);
@@ -264,4 +335,154 @@ document.addEventListener("DOMContentLoaded", function () {
     .catch((error) => {
       console.error("Error happened");
     });
+});
+
+//Registration validation for on change==========================================
+
+function handelChange() {
+  const errorWarning = document.querySelectorAll(".error");
+  const errorBoarder = document.querySelectorAll(".fields");
+
+  errorWarning.forEach((message) => (message.textContent = ""));
+  errorBoarder.forEach((boarder) => boarder.classList.remove("error-boarder"));
+
+  document.getElementById("fname-error").textContent = "";
+  document.getElementById("lname-error").textContent = "";
+  console.log("hellooo");
+  let fname = document.getElementById("fname");
+  fname.classList.remove("error-boarder");
+
+  let lname = document.getElementById("lname");
+  lname.classList.remove("error-boarder");
+
+  let email = document.getElementById("email");
+  email.classList.remove("error-boarder");
+
+  let password = document.getElementById("password");
+  password.classList.remove("error-boarder");
+
+  if (fname.value.length > 0) {
+    if (fname.value.length <= 2) {
+      document.getElementById("fname-error").textContent =
+        "Please enter a First name with more than 2 letters";
+
+      fname.classList.add("error-boarder");
+    }
+  }
+  if (lname.value.length > 0) {
+    if (lname.value.length <= 2) {
+      document.getElementById("lname-error").textContent =
+        "Please enter a Last name with more than 2 letters";
+
+      lname.classList.add("error-boarder");
+    }
+  }
+}
+
+function calculateAge() {
+  var dobInput = document.getElementById("dob");
+  var ageInput = document.getElementById("age");
+  var dobError = document.getElementById("dob-error");
+
+  var dob = new Date(dobInput.value);
+  var today = new Date();
+
+  // Validate if DOB is in the future
+  if (dob > today) {
+    dobInput.classList.add("error-boarder");
+    document.getElementById("dob-error").textContent =
+      "Please a valid Date of birth";
+    ageInput.value = "";
+    return;
+  } else {
+    dobInput.classList.remove("error-boarder");
+    document.getElementById("dob-error").textContent = "";
+  }
+
+  // Calculating the  age
+  var age = today.getFullYear() - dob.getFullYear();
+  ageInput.value = age;
+}
+
+//=======TO do Logic
+
+function addTask() {
+  var task = document.getElementById("task");
+  var showTask = document.getElementById("taskList");
+
+  // Create new li element in the UL to show the enterd task
+  var li = document.createElement("li");
+  li.innerHTML = `
+      <span>${task.value}</span>
+      <button onclick="removeTask(this)">Remove</button>`;
+  showTask.appendChild(li);
+
+  // Clear input field once the task is added
+  task.value = "";
+}
+
+function removeTask(button) {
+  var li = button.parentElement;
+  li.remove();
+}
+
+const themeButton = document.getElementById("buttTheme");
+
+const formbody = document.getElementById("regForm");
+
+let k = 1;
+themeButton.addEventListener("click", () => {
+  if (k % 2 == 0) {
+    themeButton.textContent = "Dark mode";
+  } else {
+    themeButton.textContent = "Light mode";
+  }
+  k++;
+  formbody.classList.toggle("dark-mode");
+});
+
+//Calculator logic
+
+function addToDisplay(value) {
+  displayValue += value;
+  updateDisplay();
+}
+
+function clearDisplay() {
+  displayValue = "0";
+  operator = "";
+  firstOperand = "";
+  secondOperand = "";
+  updateDisplay();
+}
+
+function updateDisplay() {
+  document.getElementById("display").innerText = displayValue;
+}
+
+function calculate() {
+  try {
+    displayValue = eval(displayValue).toString();
+    updateDisplay();
+  } catch (error) {
+    displayValue = "Error";
+    updateDisplay();
+  }
+}
+
+function setOperator(op) {
+  if (operator !== "") {
+    calculate();
+  }
+  operator = op;
+  firstOperand = displayValue;
+  displayValue = "0";
+  updateDisplay();
+}
+
+// Functionality set operator when oprtaor button  clicks
+document.querySelectorAll(".operator").forEach((item) => {
+  item.addEventListener("click", (event) => {
+    setOperator(event.target.innerText);
+  });
 });
