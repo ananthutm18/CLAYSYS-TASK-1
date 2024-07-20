@@ -486,3 +486,9 @@ document.querySelectorAll(".operator").forEach((item) => {
     setOperator(event.target.innerText);
   });
 });
+
+
+
+
+//Email sending.......==================================
+
