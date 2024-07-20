@@ -187,16 +187,6 @@ function handlesubmit(event) {
     isvalid = false;
   }
 
-  // if (fname.length < 2) {
-  //   document.getElementById("fname-error").textContent =
-  //     "Please enter a First name with more than 2 letters";
-  //   isvalid = false;
-  // }
-  // if (lname.length < 2) {
-  //   document.getElementById("lname-error").textContent =
-  //     "Please enter A Last name with more than 2 letters";
-  //   isvalid = false;
-  // }
   if (phone.startsWith("1") || phone.startsWith("2") || phone.startsWith("3")) {
     document.getElementById("phone-error").textContent =
       "Enter a vaild phone number";
@@ -258,7 +248,7 @@ function handleLogin(event) {
   }
 }
 
-//function to hide and show the contact form on the home pafe
+//function to hide and show the contact form on the home page(J query implementation)
 let toggle = 1;
 
 $(document).ready(function () {
@@ -386,12 +376,23 @@ function calculateAge() {
 
   var dob = new Date(dobInput.value);
   var today = new Date();
+  var fifteenYearsAgo = new Date(
+    today.getFullYear() - 15,
+    today.getMonth(),
+    today.getDate()
+  );
 
   // Validate if DOB is in the future
   if (dob > today) {
     dobInput.classList.add("error-boarder");
     document.getElementById("dob-error").textContent =
       "Please a valid Date of birth";
+    ageInput.value = "";
+    return;
+  } else if (dob > fifteenYearsAgo) {
+    dobInput.classList.add("error-boarder");
+    document.getElementById("dob-error").textContent =
+      "Booy,,,You are a kid,..Come back when you are above 15,,, future Warior...";
     ageInput.value = "";
     return;
   } else {
@@ -426,19 +427,18 @@ function removeTask(button) {
   li.remove();
 }
 
-const themeButton = document.getElementById("buttTheme");
-
-const formbody = document.getElementById("regForm");
-
+//Dark mode logic (2 nd implementation of J quey)
 let k = 1;
-themeButton.addEventListener("click", () => {
+
+$("#buttTheme").click(function () {
+  console.log("hello");
   if (k % 2 == 0) {
-    themeButton.textContent = "Dark mode";
+    $("#buttTheme").text("Dark mode");
   } else {
-    themeButton.textContent = "Light mode";
+    $("#buttTheme").text("Light mode");
   }
   k++;
-  formbody.classList.toggle("dark-mode");
+  $("#regForm").toggleClass("dark-mode");
 });
 
 //Calculator logic

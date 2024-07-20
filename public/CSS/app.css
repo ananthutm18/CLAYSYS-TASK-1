@@ -149,8 +149,8 @@ textarea {
 
 .login-form  {
   position: absolute;
-left: 800px;
-top: 100px;
+  left: 455px;
+  top: 100px;
   background-color: white;
   padding: 100px;
   height: 40%;
@@ -161,6 +161,15 @@ top: 100px;
   border-radius: 5px;
 
 }
+
+.footer-links li{
+  margin-left: 10px;
+}
+.footer-links li a{
+  color: #f3ebeb;
+  font-size: 22px;
+}
+
 
 
 .login-container{
@@ -275,6 +284,13 @@ display: flex;
 .calcont{
   background-color: #7b7171;
 }
+.marquee{
+  background-color: #88eef2;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 18px;
+  color: #333;
+}
 
 .calculator{
   background-image:url("https://static0.gamerantimages.com/wordpress/wp-content/uploads/2022/11/god-of-war-ragnarok-releases-2-04-update-gamerant.jpg");
@@ -326,10 +342,10 @@ position:static;  }
   display: block;
   padding: 8px 16px;
   border-radius: 4px;
-  transition: background-color 0.3s ease;
 }
 #menuList{
 display: none;
+
 }
 
 #menuList.show {
@@ -338,6 +354,8 @@ display: none;
   border-radius: 5px;
   padding: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(1.1);
+
 }
 
 .showmenu{
@@ -358,6 +376,7 @@ overflow:auto;
   width: 300px;
 }
 }
+
 
 
 
